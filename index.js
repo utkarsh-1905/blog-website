@@ -32,6 +32,10 @@ app.get('/blogs',async (req,res)=>{
     res.render('blogs',{blogs});
 })
 
+app.get('/new',(req,res)=>{
+    res.render('new');
+})
+
 const port = process.env.PORT || 3000;
 
 app.listen(port);

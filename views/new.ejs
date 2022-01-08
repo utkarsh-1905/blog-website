@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://cdn.tiny.cloud/1/py0k21vae98ncot6jphk8dyaqheg3k35o39k612wkarpftr2/tinymce/5/tinymce.min.js"
+      referrerpolicy="origin"
+    ></script>
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Create Blog || Admin</title>
+  </head>
+
+  <body class="w-[80%] mx-auto font-sans bg-zinc-900">
+    <%- include('partials/navbar.ejs') %>
+    <hr class="bg-gradient-to-r from-purple-600 to-pink-400" />
+    <h2 class="text-center text-7xl font-extrabold text-purple-800 mt-12">
+      Making a Blog...
+    </h2>
+    <div class="card bg-zinc-800 rounded-lg w-[90%] p-10 mx-auto mb-10 mt-10">
+      <form action="" class="flex flex-col align-center" method="post">
+        <div class="1 mb-5">
+          <label for="title" class="text-pink-400 underline underline-offset-2 font-semibold text-2xl"
+            >Title :
+          </label>
+          <input
+            type="text"
+            class="form-input rounded-lg m-2 w-[90%] mb-2"
+            id="title"
+            placeholder="Enter the title"
+            name="title"
+            required
+          />
+        </div>
+        <div class="2 mb-5">
+          <label for="body" class="text-pink-400 font-semibold underline underline-offset-2 text-2xl"
+            >Type the Blog : </label
+          >
+          <textarea id="body" class="form-input m-4" rows="20">Start Typing...</textarea>
+        </div>
+        <div class="3 mb-5">
+          <label for="images" class="text-pink-400 underline underline-offset-2 font-semibold text-2xl"
+            >Browse Images :
+          </label>
+          <input
+            type="file"
+            enctype="multipart/form-data"
+            multile
+            class="form-input mb-2 mx-2"
+            id="images"
+          />
+        </div>
+        <button
+          class="text-3xl font-bold text-purple-800 w-[25%] p-2 mx-auto bg-zinc-900 rounded-lg drop-shadow-2xl my-4"
+        >
+          Create
+        </button>
+      </form>
+    </div>
+    <script>
+      tinymce.init({
+        selector: "textarea#body",
+        plugins : ['autolink','autosave','emoticons','wordcount','hr'],
+        toolbar:['restoredraft | emoticons | wordcount | hr ']
+      });
+    </script>
+  </body>
+</html>
