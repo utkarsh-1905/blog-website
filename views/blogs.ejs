@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Document</title>
+  </head>
+  <body class="w-[80%] mx-auto font-sans bg-zinc-900">
+    <%- include('partials/navbar.ejs') %>
+    <hr class="bg-gradient-to-r from-purple-600 to-pink-400" />
+    <a href="/new"><button>New Blog</button></a>
+    <main class="flex flex-col">
+      <div class="blogs">
+        <h1 class="float-right text-8xl font-extrabold text-purple-800">
+          Articles
+        </h1>
+      </div>
+      <% for(let blog of blogs){%> 
+      <div class="card my-10 flex justify-around">
+        <div class="w-[90%] rounded-lg bg-zinc-800 h-64 drop-shadow-2xl">
+          <div class="card-items flex justify-between">
+            <div class="card-image w-[30%]">
+                <img src="<%=blog.image%>" class="h-64 rounded-l-lg" alt="">
+            </div>
+            <div class="card-content w-[65%] flex flex-col justify-evenly align-middle">
+                <div class="card-title text-pink-400 mt-5 text-4xl flex-start font-bold"><%=blog.title%>
+                <span class="created ml-80 text-sm font-bold text-zinc-500"><%=blog.getDate%></span>
+                </div>
+                <article class="card-description prose text-zinc-500"><%=blog.body%></article>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% } %> 
+    </main>
+  </body>
+</html>

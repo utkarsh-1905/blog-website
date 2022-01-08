@@ -1,0 +1,75 @@
+<%- include('layouts/boilerplate.ejs') %> 
+  <body class="w-[80%] mx-auto font-sans bg-zinc-900">
+    <%- include('partials/navbar.ejs') %> 
+    <hr class="bg-gradient-to-r from-purple-600 to-pink-400" />
+    <main class="h-[400px]">
+      <div class="intro flex justify-around mt-[100px]">
+        <div class="about bg-pink-400 w-80 rounded-lg">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore
+          explicabo magnam similique quibusdam dolores saepe, consectetur nisi
+          veritatis pariatur at.
+        </div>
+      </div>
+    </main>
+    <div
+      id="carouselExampleCaptions"
+      class="carousel slide"
+      data-bs-ride="carousel"
+    >
+      
+      <div class="carousel-inner mt-5 mb-10">
+        <div class="carousel-item active">
+          <img
+            src="assets/scott-webb-1ddol8rgUH8-unsplash.jpg"
+            class="d-block w-100"
+            alt="..."
+          />
+          <div class="carousel-caption d-none d-md-block">
+            <h5>First slide label</h5>
+            <p>Some representative placeholder content for the first slide.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img
+            src="assets/neonbrand-mGZX2MOPR-s-unsplash.jpg"
+            class="d-block w-100"
+            alt="..."
+          />
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Second slide label</h5>
+            <p>Some representative placeholder content for the second slide.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img
+            src="assets/outsite-co-R-LK3sqLiBw-unsplash (1).jpg"
+            class="d-block w-100"
+            alt="..."
+          />
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Third slide label</h5>
+            <p>Some representative placeholder content for the third slide.</p>
+          </div>
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </body>
+</html>
