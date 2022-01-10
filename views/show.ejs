@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>Hello</title>
+  </head>
+  <body class="w-full md:w-[80%] mx-auto font-sans bg-zinc-900">
+    <%-include("partials/navbar.ejs") %>
+    <div class="controls mx-4 sm:mx-6 md:mx-8 mt-5 flex justify-between">
+      <div
+        class="back p-2 text-lg text-zinc-700 hover:text-pink-400 font-semibold"
+      >
+        <a href="/blogs" class="flex p-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6 mr-3"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M10 19l-7-7m0 0l7-7m-7 7h18"
+            />
+          </svg>
+          Go Back</a
+        >
+      </div>
+      <div class="share cursor-pointer mt-4 ml-3">
+        <button class="share-btn">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6 text-zinc-700 hover:text-pink-400"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
+            />
+          </svg>
+        </button>
+        <div
+          class="share-modal hidden h-10 w-32 bg-zinc-700 rounded-lg shadow-lg text-purple-400 z-10 absolute right-6 sm:right-14 md:right-32 lg:right-40"
+        >
+          <div class="share-modal-content flex justify-evenly pr-2 pt-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 pt-1 text-zinc-400"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z"
+              />
+            </svg>
+            Copy Url
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="blog-body w-[90%] md:w-full mx-auto border-2 rounded-lg">
+      <div class="content p-4">
+        <p><%=blog.getDate%></p>
+        <p><%=blog.title%></p>
+        <img src="<%=blog.image%>" alt="" />
+        <article>
+          <%=blog.body%>
+        </article>
+      </div>
+    </div>
+    <%-include('partials/clientScripts.ejs') %>
+    <script src="/js/share.js"></script>
+  </body>
+</html>

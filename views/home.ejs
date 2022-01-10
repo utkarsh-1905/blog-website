@@ -1,7 +1,7 @@
 <%- include('layouts/boilerplate.ejs') %> 
-  <body class="w-[80%] mx-auto font-sans bg-zinc-900">
-    <%- include('partials/navbar.ejs') %> 
-    <hr class="bg-gradient-to-r from-purple-600 to-pink-400" />
+  <body class="w-full md:w-[80%] mx-auto font-sans bg-zinc-900">
+    <%-include('partials/navbar.ejs')%> 
+    <!-- <hr class="bg-gradient-to-r w-full from-purple-600 to-pink-400" /> -->
     <main class="h-[400px]">
       <div class="intro flex justify-around mt-[100px]">
         <div class="about bg-pink-400 w-80 rounded-lg">
@@ -71,5 +71,6 @@
         <span class="visually-hidden">Next</span>
       </button>
     </div>
+    <%- include('partials/clientScripts.ejs') %> 
   </body>
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -12,10 +12,10 @@
     <title>Create Blog || Admin</title>
   </head>
 
-  <body class="w-[80%] mx-auto font-sans bg-zinc-900">
+  <body class="w-full md:w-[80%] mx-auto font-sans bg-zinc-900">
     <%- include('partials/navbar.ejs') %>
-    <hr class="bg-gradient-to-r from-purple-600 to-pink-400" />
-    <h2 class="text-center text-7xl font-extrabold text-purple-800 mt-12">
+    <!-- <hr class="bg-gradient-to-r from-purple-600 to-pink-400" /> -->
+    <h2 class="text-center text-4xl sm:text-5xl md:text-7xl font-extrabold text-purple-800 mt-12">
       Making a Blog...
     </h2>
     <div class="card bg-zinc-800 rounded-lg w-[90%] p-10 mx-auto mb-10 mt-10">
@@ -47,17 +47,18 @@
             type="file"
             enctype="multipart/form-data"
             multile
-            class="form-input mb-2 mx-2"
+            class="form-input mb-2 mx-2 file:bg-purple-800 file:border-0 file:rounded-lg file:text-zinc-800 file:p-2 file:mr-4 hover:file:bg-pink-400"
             id="images"
           />
         </div>
         <button
-          class="text-3xl font-bold text-purple-800 w-[25%] p-2 mx-auto bg-zinc-900 rounded-lg drop-shadow-2xl my-4"
+          class="text-xl sm:text-3xl font-bold text-purple-800 w-[25%] p-2 mx-auto bg-zinc-900 rounded-lg drop-shadow-2xl my-4"
         >
           Create
         </button>
       </form>
     </div>
+    <%- include('partials/clientScripts.ejs') %> 
     <script>
       tinymce.init({
         selector: "textarea#body",

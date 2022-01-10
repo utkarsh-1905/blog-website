@@ -1,0 +1,14 @@
+<script type="text/javascript">
+  const menu = document.querySelector(".menu-modal");
+  const body = document.querySelector("body");
+  const showMenu = () => {
+    menu.classList.toggle("hidden");
+  };
+  body.addEventListener("click", function (e) {
+    if (!e.target.closest(".menu-modal") && !e.target.closest(".menu-btn")) {
+      if (!menu.classList.contains("hidden")) {
+        menu.classList.toggle("hidden");
+      }
+    }
+  });
+</script>

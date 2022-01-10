@@ -1,39 +1,219 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
     <title>Document</title>
   </head>
-  <body class="w-[80%] mx-auto font-sans bg-zinc-900">
+  <body class="w-full md:w-[90%] lg:w-[80%] mx-auto font-sans bg-zinc-900">
     <%- include('partials/navbar.ejs') %>
-    <hr class="bg-gradient-to-r from-purple-600 to-pink-400" />
-    <a href="/new"><button>New Blog</button></a>
+    <!-- <hr class="bg-gradient-to-r from-purple-600 to-pink-400" /> -->
     <main class="flex flex-col">
       <div class="blogs">
-        <h1 class="float-right text-8xl font-extrabold text-purple-800">
+        <h1
+          class="text-center sm:float-right mb-10 text-5xl sm:text-8xl font-extrabold text-purple-800"
+        >
           Articles
         </h1>
+        <!-- To put forward and back  button -->
+        <div class="btns"></div>
       </div>
-      <% for(let blog of blogs){%> 
-      <div class="card my-10 flex justify-around">
-        <div class="w-[90%] rounded-lg bg-zinc-800 h-64 drop-shadow-2xl">
+      <% let i=1;for(let blog of blogs){%>
+      <!-- Greater then 640px -->
+      <div class="card-big my-10 hidden sm:flex justify-around shadow">
+        <div
+          class="w-[95%] rounded-lg bg-zinc-800 sm:h-96 md:h-[25rem] md:w-full lg:h-80 shadow-lg drop-shadow-2xl"
+        >
           <div class="card-items flex justify-between">
-            <div class="card-image w-[30%]">
-                <img src="<%=blog.image%>" class="h-64 rounded-l-lg" alt="">
+            <div class="card-image w-[40%]">
+              <a href="/blogs/<%=blog._id%>"
+                ><img
+                  src="<%=blog.image%>"
+                  class="sm:h-96 md:h-[25rem] lg:h-80 rounded-l-lg"
+                  alt=""
+              /></a>
             </div>
-            <div class="card-content w-[65%] flex flex-col justify-evenly align-middle">
-                <div class="card-title text-pink-400 mt-5 text-4xl flex-start font-bold"><%=blog.title%>
-                <span class="created ml-80 text-sm font-bold text-zinc-500"><%=blog.getDate%></span>
+            <div class="card-content w-[55%] pr-5 justify-evenly align-middle">
+              <div class="share float-right cursor-pointer mt-4 ml-3">
+                <button class="share-btn" id="modal-btn-<%=i%>">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6 text-zinc-700 hover:text-pink-400"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
+                    />
+                  </svg>
+                </button>
+                <div
+                  class="share-modal hidden h-10 w-32 bg-zinc-700 rounded-lg shadow-lg text-purple-400 z-10 absolute right-4"
+                >
+                  <div
+                    class="share-modal-content flex justify-evenly pr-2 pt-2"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-5 w-5 pt-1 text-zinc-400"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z"
+                      />
+                    </svg>
+                    Copy Url
+                  </div>
                 </div>
-                <article class="card-description prose text-zinc-500"><%=blog.body%></article>
+              </div>
+              <div
+                class="card-title text-pink-400 mt-4 text-lg md:text-xl float-left font-bold"
+              >
+                <a href="/blogs/<%=blog._id%>" class="cursor-pointer"
+                  ><%=blog.title%></a
+                >
+                <span
+                  class="card-date ml-64 text-center mt-2 float-right text-sm font-bold text-zinc-500"
+                  ><%=blog.getDate%></span
+                >
+              </div>
+              <article
+                class="card-description mt-32 pr-1 text-left prose text-lg text-zinc-500"
+              >
+                <%=blog.getDescription%>...
+                <a href="/blogs/<%=blog._id%>" class="text-sm text-gray-500"
+                  >Read More</a
+                >
+              </article>
+              <hr class="mt-14 bg-gray-900 text-gray-900" />
+              <div class="reactions flex justify-around mt-1 text-zinc-700">
+                <div class="views">100 views</div>
+                <div class="comments">0 comments</div>
+                <div class="hearts flex p-1">
+                  <button class="like">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-6 w-6 hover:rounded-full hover:bg-pink-300 text-red-500 mr-2"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                      />
+                    </svg></button
+                  >5
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <% } %> 
+      <!-- Less than 640 px -->
+      <div class="card-mobile mb-8 flex flex-col sm:hidden">
+        <div
+          class="rounded-lg bg-zinc-800 h-[30rem] shadow-2xl w-[80%] mx-auto"
+        >
+          <div class="card-items flex flex-col">
+            <div class="card-image">
+              <a href="/blogs/<%=blog._id%>"
+                ><img
+                  src="<%=blog.image%>"
+                  class="rounded-t-lg h-48 w-full"
+                  alt=""
+                />
+                <div class="share absolute right-16 cursor-pointer mt-4 ml-3">
+                  <button class="share-btn" id="modal-btn-<%=i%>">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-6 w-6 text-zinc-700 hover:text-pink-400"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
+                      />
+                    </svg>
+                  </button>
+                  <div
+                    class="share-modal hidden h-10 w-32 bg-zinc-700 rounded-lg shadow-lg text-purple-400 z-10 absolute right-4"
+                  >
+                    <div
+                      class="share-modal-content flex justify-evenly pr-2 pt-2"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-5 w-5 pt-1 text-zinc-400"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z"
+                        />
+                      </svg>
+                      Copy Url
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="card-title text-pink-400 text-lg flex-start p-4">
+              <%=blog.title%>
+              <span class="card-date text-xs font-bold text-zinc-500"
+                ><%=blog.getDate %>
+              </span>
+            </div>
+            <article
+              class="card-description prose text-sm text-zinc-600 text-center px-2 py-auto"
+            >
+              <%=blog.getDescription %>...
+              <a href="/blogs/<%=blog._id%>" class="text-xs text-gray-500"
+                >Read More</a
+              >
+            </article>
+            <hr class="mt-8 h-1 bg-zinc-800" />
+            <div class="reactions flex justify-around my-[5%] text-zinc-700">
+              <div class="views">100 views</div>
+              <div class="comments">0 comments</div>
+              <div class="hearts flex p-1">
+                <button class="like">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6 hover:rounded-full hover:bg-pink-300 text-red-500 mr-2"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                    />
+                  </svg></button
+                >5
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%i++; } %>
     </main>
+    <%- include('partials/clientScripts.ejs') %>
+    <script src="/js/share.js"></script>
   </body>
 </html>

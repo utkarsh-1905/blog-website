@@ -14,10 +14,15 @@ const blogSchema = new Schema({
     rating:Number,
     edited:Boolean,
     created:Date,
+    views:Number,
 })
 
 blogSchema.virtual("getDate").get(function (){
     return this.created.toDateString();
+})
+
+blogSchema.virtual("getDescription").get(function (){
+    return this.body.substring(0, 150);
 })
 
 module.exports = mongoose.model('Blog',blogSchema);
